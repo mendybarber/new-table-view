@@ -16,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let newItemArray = NewItemArray()
+        
+        let itemController = window!.rootViewController as! UINavigationController
+        let itemsController = itemController.topViewController as! ViewController
+        itemsController.itemArray = newItemArray
         return true
     }
 
