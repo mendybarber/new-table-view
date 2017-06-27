@@ -1,7 +1,7 @@
 //
 //  SecondViewController.swift
 //  new table view
-//
+//ier
 //  Created by Menachem Barber on 5/22/17.
 //  Copyright © 2017 Menachem Barber. All rights reserved.
 //
@@ -9,13 +9,11 @@
 import UIKit
 
 class SecondViewController: UIViewController, UINavigationControllerDelegate {
-    var items: NewItem! {
-        didSet {
-            navigationItem.title = items.name
-            
-        }
-    }
+    var items: NewItem!
+    
     var itemsArray: NewItemArray!
+    
+    var segueIdentifier = ""
     
     @IBOutlet weak var secondTextField: UITextField!
     
@@ -25,9 +23,15 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(itemsArray.newItemArray.count)
+//        print(itemsArray.newItemArray.count)
 
         // Do any additional setup after loading the view.
+        
+        if segueIdentifier == "segue1" {
+            secondTextField.text = items.name
+        }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,9 +51,16 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate {
     */
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        if secondTextField.text == "" {
+            return
+        } else {
+        if segueIdentifier != "segue1" {
+            itemsArray.newItemArray.append(NewItem(name: secondTextField.text ?? ""))
+        } else {
+            items.name = secondTextField.text ?? ""
+        }
         
-        items.name = secondTextField.text ?? ""
-        
+       }
     }
     
     
