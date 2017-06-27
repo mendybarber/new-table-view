@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewItem: NSObject {
+class NewItem: NSObject, NSCoding {
     
     var name: String = "hi"
     
@@ -29,6 +29,14 @@ class NewItem: NSObject {
         }
     }
          
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+    }
+    required init?(coder aDecoder: NSCoder) {
+        name = aDecoder.decodeObject(forKey: "name") as! String
+        
+        super.init()
+    }
     
     
     

@@ -55,6 +55,39 @@ class NewItemArray {
             .remove(at: fromIndex)
         newItemArray.insert(movedItem, at: toIndex)
     }
-
+  
+    let itemArchiveURL: URL = {
+        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        var documentDirectory = documentsDirectories.first!
+        return documentDirectory.appendingPathComponent("items.archive")
+    }()
+    
+    func saveChanges() -> Bool {
+        print("save items to \(itemArchiveURL.path)")
+       return NSKeyedArchiver.archiveRootObject(secondItemArray, toFile: itemArchiveURL.path)
+    }
+    
+    init() {
+        if let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveURL.path) as? [NewItem] {
+            newItemArray = archivedItems
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

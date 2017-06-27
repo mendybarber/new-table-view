@@ -13,7 +13,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var itemArray: NewItemArray!
     
     
-//    let newItemArray = NewItemArray()
+
     
     @IBOutlet weak var segmentedControlOutlet: UISegmentedControl!
     
@@ -32,12 +32,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Do any additional setup after loading the view, typically from a nib.
         myTableView.dataSource = self
         myTableView.delegate = self
-        itemArray = NewItemArray()
         
         myTableView.rowHeight = UITableViewAutomaticDimension
         myTableView.estimatedRowHeight = 44
-        
-        
+               
         
     }
 
@@ -215,7 +213,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             break
         }
     }
-
     
   
 }
