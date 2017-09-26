@@ -62,9 +62,10 @@ class NewItemArray {
         return documentDirectory.appendingPathComponent("items.archive")
     }()
     
+    
     func saveChanges() -> Bool {
         print("save items to \(itemArchiveURL.path)")
-       return NSKeyedArchiver.archiveRootObject(secondItemArray, toFile: itemArchiveURL.path)
+       return NSKeyedArchiver.archiveRootObject(newItemArray, toFile: itemArchiveURL.path)
     }
     
     init() {

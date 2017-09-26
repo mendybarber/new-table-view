@@ -31,9 +31,11 @@ class NewItem: NSObject, NSCoding {
          
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
+        aCoder.encode(done, forKey: "done")
     }
     required init?(coder aDecoder: NSCoder) {
         name = aDecoder.decodeObject(forKey: "name") as! String
+        done = aDecoder.decodeBool(forKey: "done")
         
         super.init()
     }
